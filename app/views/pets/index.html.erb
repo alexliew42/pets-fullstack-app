@@ -1,0 +1,9 @@
+<h1>My Pet Pal</h1>
+<a href= "/pets/new">New Pet</a>
+<% @pets.each do |pet| %>
+  <h2><%=pet.name%></h2>
+  <p>Species: <%=pet.species%></p>
+  <img src="#{<%=pet.image%>}">
+  <a href="/pets/<%=pet.id%>">More Info</a>
+<%end%>
+
