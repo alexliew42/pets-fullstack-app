@@ -33,13 +33,16 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find_by(id: params[:id])
     if @pet.user_id == current_user.id
-    @pet.update(
-      name: params[:pet][:name],
-      species: params[:pet][:species],
-      breed: params[:pet][:breed],
-      image: params[:pet][:image]
-    )
-    redirect_to "/pets/#{@pet.id}"
+      @pet.update(
+        name: params[:pet][:name],
+        species: params[:pet][:species],
+        breed: params[:pet][:breed],
+        image: params[:pet][:image]
+      )
+      redirect_to "/pets/#{@pet.id}"
+    else
+      render :index, status: :unauthorized
+    end 
   end
 
   def destroy
